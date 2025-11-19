@@ -1,0 +1,30 @@
+# This file is part of the MoveIt2 Tutorials
+# SPDX-License-Identifier: Apache-2.0
+#author: JLU  104  GXY 2025.10.27
+# This file is based on the original file from MoveIt2 Tutorials
+# 基座相机
+sensors:
+  - base_depth_sensor
+  - wrist_depth_sensor
+base_depth_sensor:
+  filtered_cloud_topic: filtered_cloud
+  max_range: 1.0                             #（以米为单位）超过此距离的点将不会被使用。
+  max_update_rate: 5.0                        #传感器的最大更新频率（以Hz为单位）。
+  min_range: 0.2                              #（以米为单位）低于此距离的点将不会被使用。
+  padding_offset: 0.1                             #填充的大小（以厘米为单位）。
+  padding_scale: 1.0                                 #填充的比例。
+  point_cloud_topic: /camera/camera/depth/color/points
+  point_subsample: 1                  # 从每个point_subsample点中选择一个。
+  sensor_plugin: occupancy_map_monitor/PointCloudOctomapUpdater
+
+# 手部相机
+wrist_depth_sensor:
+  filtered_cloud_topic: filtered_cloud
+  max_range: 0.4                            #（以米为单位）超过此距离
+  max_update_rate: 10.0                        #传感器的最大更新频率（以Hz为单位）。
+  min_range: 0.1                              #（以米为单位）低于此
+  padding_offset: 0.1                             #填充的大小（以厘米为单位）。
+  padding_scale: 1.0                                 #填充的比例。
+  point_cloud_topic: /Scepter/depth2color/points
+  point_subsample: 1                  # 从每个point_subsample点中选择一个。
+  sensor_plugin: occupancy_map_monitor/PointCloudOctomapUpdater

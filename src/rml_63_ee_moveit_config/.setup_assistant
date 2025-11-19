@@ -1,0 +1,25 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: rml_63_ee_description
+    relative_path: urdf/rml_63_ee.urdf
+  srdf:
+    relative_path: config/rml_63_ee_description.srdf
+  package_settings:
+    author_name: cosin
+    author_email: 2424430871@qq.com
+    generated_timestamp: 1761572570
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity
+  modified_urdf:
+    xacros:
+      - control_xacro
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity

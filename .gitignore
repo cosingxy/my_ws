@@ -1,0 +1,9 @@
+# 构建和安装目录
+build/
+install/
+log/
+*.log
+# 开发工具
+.vscode/
+.ccls*
+compile_commands.json

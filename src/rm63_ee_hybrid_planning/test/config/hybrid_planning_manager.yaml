@@ -1,0 +1,2 @@
+# 规划逻辑插件，通用配置
+planner_logic_plugin_name: "moveit_hybrid_planning/ReplanInvalidatedTrajectory"

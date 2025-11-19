@@ -1,0 +1,31 @@
+robot_description: "robot_description"
+trajectory_operator_plugin_name: "moveit_hybrid_planning/SimpleSampler"
+local_constraint_solver_plugin_name: "moveit_hybrid_planning/ForwardTrajectory"
+local_planning_frequency: 100.0
+global_solution_topic: "global_trajectory"
+# local_planner.yaml
+# 这个是输出到控制器的配置，local_solution_topic 和 local_solution_topic_type 要根据具体控制器调整
+# Local Planner将计算好的轨迹发布给controller
+local_solution_topic: "/arm_controller/joint_trajectory"
+local_solution_topic_type: "trajectory_msgs/JointTrajectory"
+
+# local_solution_topic: "/arm_controller/commands" # RML 63 EE 控制器
+# local_solution_topic_type: "std_msgs/Float64MultiArray" # or trajectory_msgs/JointTrajectory
+publish_joint_positions: true
+publish_joint_velocities: false
+group_name: "arm"  # RML 63 EE 规划组
+# Subscribe to this topic
+monitored_planning_scene: "/planning_scene"
+collision_object_topic: "/collision_object"
+joint_states_topic: "/joint_states"
+
+# ForwardTrajectory param
+stop_before_collision: false
+# 完整的轨迹消息，包含时间戳、多个路点、速度、加速度
+# std_msgs/Header header
+# string[] joint_names
+# trajectory_msgs/JointTrajectoryPoint[] points
+#   └─ float64[] positions      # 关节位置
+#   └─ float64[] velocities     # 关节速度
+#   └─ float64[] accelerations  # 关节加速度
+#   └─ duration time_from_start # 时间戳
