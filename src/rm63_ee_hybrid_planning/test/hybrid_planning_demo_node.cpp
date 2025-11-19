@@ -226,7 +226,8 @@ public:
     // 起点：zero 姿态
     // 终点：手动给的一组 6 关节角度（你可以改成适合你机械臂的目标姿态）；
     // 把起点 + 终点包进 MotionPlanRequest。
-    // moveit_msgs::msg::MotionPlanRequest goal_motion_request;
+
+    moveit_msgs::msg::MotionPlanRequest goal_motion_request;
 
     moveit::core::robotStateToRobotStateMsg(*robot_state, goal_motion_request.start_state);
     goal_motion_request.group_name = planning_group;
@@ -239,7 +240,7 @@ public:
 
     moveit::core::RobotState goal_state(robot_model);
     // RML 63 EE has 6 joints, adjust goal position for your robot
-    std::vector<double> joint_values = { 0.0, 0.5, 0.5, 0.0, 0.5, 0.0 };
+    std::vector<double> joint_values = { 0.5, 0.5, 0.5, 0.0, 0.5, 0.0 };
     goal_state.setJointGroupPositions(joint_model_group, joint_values);
 
     goal_motion_request.goal_constraints.resize(1);
