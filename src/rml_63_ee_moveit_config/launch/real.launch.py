@@ -72,11 +72,9 @@ def generate_launch_description():
         ],
         output="screen",
     )
+    
     ld.add_action(static_camera_tf_node)
-
-
-    # 3. robot_state_publisher
-    #    发布robot_description到TF，用的是你现在这个带ee_link的URDF
+    # 3. robot_state_publisher 节点
     robot_state_pub_node = Node(
         package="robot_state_publisher",
         executable="robot_state_publisher",
@@ -99,7 +97,7 @@ def add_move_group(ld, moveit_config):
     ld.add_action(DeclareBooleanLaunchArg("debug", default_value=False))
     # octomap 分辨率
     ld.add_action(
-        DeclareLaunchArgument("octomap_resolution", default_value="0.005")
+        DeclareLaunchArgument("octomap_resolution", default_value="0.01")
     )
     # 是否允许执行轨迹
     ld.add_action(

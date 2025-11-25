@@ -52,6 +52,9 @@
   <!-- 用了 get_package_share_directory(...) -->
   <exec_depend>ament_index_python</exec_depend>
 
+    <!-- TRAC-IK 相关依赖（新加的） -->
+  <exec_depend>trac_ik_lib</exec_depend>
+  <exec_depend>trac_ik_kinematics_plugin</exec_depend>
 
   <export>
       <build_type>ament_cmake</build_type>

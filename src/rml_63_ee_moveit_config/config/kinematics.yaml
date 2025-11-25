@@ -1,4 +1,14 @@
-arm:
-  kinematics_solver: kdl_kinematics_plugin/KDLKinematicsPlugin
-  kinematics_solver_search_resolution: 0.0050000000000000001
-  kinematics_solver_timeout: 0.0050000000000000001
+# arm:
+#   kinematics_solver: kdl_kinematics_plugin/KDLKinematicsPlugin
+#   kinematics_solver_search_resolution: 0.0050000000000000001
+#   kinematics_solver_timeout: 0.0050000000000000001
+
+arm:   # 这里要和你的 planning group 名字一致，比如你前面一直用的 "arm"
+  kinematics_solver: trac_ik_kinematics_plugin/TRAC_IKKinematicsPlugin
+  kinematics_solver_timeout: 0.1        # 可稍微调大一点，比如 0.2
+  kinematics_solver_attempts: 3
+  kinematics_solver_search_resolution: 0.005
+
+  # 下面这些是 TRAC-IK 特有可选参数，有需要可以加：
+  # solve_type: Speed   # 其它可选：Distance, Manipulation1, Manipulation2
+  # trac_ik_kinematics_plugin/TRAC_IKKinematicsPlugin
